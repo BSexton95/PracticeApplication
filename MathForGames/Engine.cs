@@ -38,7 +38,37 @@ namespace MathForGames
         /// </summary>
         private void Start()
         {
+            Scene scene = new Scene();
+            Player player = new Player('P', 5, 5, 1, "Player", ConsoleColor.DarkMagenta);
+            Actor actor = new Actor('^', new MathLibrary.Vector2 { X = 10, Y = 4 }, "Actor", ConsoleColor.Red);
+            
+            for (int i = 1; i < 30; i++)
+            {
+                Actor wall = new Actor('^', i, 0, "Wall", ConsoleColor.Green);
+                scene.AddActor(wall);
+            }
+            for (int i = 1; i < 10; i++)
+            {
+                Actor wall2 = new Actor('|', 0, i, "Wall2", ConsoleColor.Green);
+                scene.AddActor(wall2);
+            }
+            for (int i = 1; i < 30; i++)
+            {
+                Actor wall3 = new Actor('v', i, 10, "Wall3", ConsoleColor.Green);
+                scene.AddActor(wall3);
+            }
+            for (int i = 1; i < 10; i++)
+            {
+                Actor wall4 = new Actor('|', 30, i, "Wall4", ConsoleColor.Green);
+                scene.AddActor(wall4);
+            }
+
+            scene.AddActor(actor);
+            scene.AddActor(player);
+
+            _currentSceneIndex = AddScene(scene);
             _scenes[_currentSceneIndex].Start();
+
             Console.CursorVisible = false;
         }
 

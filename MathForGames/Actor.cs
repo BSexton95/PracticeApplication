@@ -70,6 +70,7 @@ namespace MathForGames
 
         public virtual void OnCollision(Actor actor)
         {
+
             Engine.CloseApplication();
         }
     }

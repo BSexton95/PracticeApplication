@@ -30,6 +30,8 @@ namespace MathForGames
 
         public override void Update()
         {
+            //Ball ball = new Ball();
+
             Vector2 moveDirection = new Vector2();
 
             ConsoleKey keyPressed = Engine.GetNextKey();
@@ -42,12 +44,27 @@ namespace MathForGames
                 moveDirection = new Vector2 { Y = -1 };
             if (keyPressed == ConsoleKey.S)
                 moveDirection = new Vector2 { Y = 1 };
+            //if (keyPressed == ConsoleKey.Spacebar)
+              //  ball = new Ball { 'O', new Vector2 { X = 1, Y = 1 }, ConsoleColor.Cyan };
 
             Velocity = moveDirection * Speed;
 
             Position += Velocity;
         }
+        /*
+        public virtual bool ThrowBall()
+        {
+            ConsoleKey keyPressed = Engine.GetNextKey();
 
+            if (keyPressed == ConsoleKey.Spacebar)
+            {
+                Ball ball = new Ball('O', new Vector2 { X = 1, Y = 1 }, ConsoleColor.Cyan);
+                return true;
+            }
+            else
+                return false;
+        }
+        */
         public override void OnCollision(Actor actor)
         {
             
