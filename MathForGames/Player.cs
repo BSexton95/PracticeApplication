@@ -33,11 +33,7 @@ namespace MathForGames
         {
             _speed = speed;
         }
-        public override void Start()
-        {
-            base.Start();
-            Velocity = new Vector2 { X = 2, Y = 2 };
-        }
+
         public override void Update()
         {
             //Ball ball = new Ball();

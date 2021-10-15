@@ -10,6 +10,7 @@ namespace MathForGames
         private char _icon;
         private Vector2 _velocity;
         private ConsoleColor _color;
+        private Vector2 _position;
         //private bool _hitTarget = false;
 
         public Vector2 Velocity
@@ -18,15 +19,14 @@ namespace MathForGames
             set { _velocity = value; }
         }
 
-        public Ball(char icon, float x, float y, ConsoleColor color = ConsoleColor.White) : base(icon, x, y, color)
+        public Ball(char icon, Vector2 position, string name, ConsoleColor color = ConsoleColor.White) : base(icon, position, name, color)
         {
-            _icon = icon;
-            _color = color;
+            
         }
 
-        public virtual void Update()
+        public override void Update()
         {
-            _velocity.X = Velocity.X + 1;
+            _position.X = Position.X + 1;
         }
 
     }

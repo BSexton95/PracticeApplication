@@ -47,8 +47,11 @@ namespace MathForGames
             //Create a new UI text that displays health
             UIText healthText = new UIText(31, 2, "Health", ConsoleColor.Blue, 10, 10, "TestText");
             //Create and add UI for the scene
-           // PlayerHud playerHud = new PlayerHud(player, healthText);
+            // PlayerHud playerHud = new PlayerHud(player, healthText);
             //scene.AddUIElement(playerHud);
+
+            Ball ball = new Ball('O', new Vector2 { X = 0, Y = 0 }, "Ball", ConsoleColor.DarkBlue);
+            scene.AddActor(ball);
 
             for (int i = 1; i < 30; i++)
             {
