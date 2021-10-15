@@ -37,6 +37,11 @@ namespace MathForGames
             get { return _icon; }
         }
 
+        public string Name
+        {
+            get { return _name; }
+        }
+
         public Actor(char icon, float x, float y, string name = "Actor", ConsoleColor color = ConsoleColor.White) :
             this(icon, new Vector2 { X = x, Y = y}, name, color) {}
         
@@ -71,7 +76,7 @@ namespace MathForGames
         public virtual void OnCollision(Actor actor)
         {
 
-            Engine.CloseApplication();
+            
         }
     }
 }

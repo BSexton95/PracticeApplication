@@ -5,7 +5,7 @@ using MathLibrary;
 
 namespace MathForGames
 {
-    class Ball
+    class Ball : Actor
     {
         private char _icon;
         private Vector2 _velocity;
@@ -18,7 +18,7 @@ namespace MathForGames
             set { _velocity = value; }
         }
 
-        public Ball(char icon, float x, float y, ConsoleColor color = ConsoleColor.White)
+        public Ball(char icon, float x, float y, ConsoleColor color = ConsoleColor.White) : base(icon, x, y, color)
         {
             _icon = icon;
             _color = color;

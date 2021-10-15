@@ -9,7 +9,13 @@ namespace MathForGames
     {
         private float _speed;
         private Vector2 _velocity;
+        private int _playersOnTeam = 6;
 
+        public int PlayersOnTeam
+        {
+            get { return _playersOnTeam; }
+            set { _playersOnTeam = value; }
+        }
         public float Speed
         {
             get { return _speed; }
@@ -27,7 +33,11 @@ namespace MathForGames
         {
             _speed = speed;
         }
-
+        public override void Start()
+        {
+            base.Start();
+            Velocity = new Vector2 { X = 2, Y = 2 };
+        }
         public override void Update()
         {
             //Ball ball = new Ball();
@@ -67,7 +77,11 @@ namespace MathForGames
         */
         public override void OnCollision(Actor actor)
         {
+            if (actor.Name == "Wall")
+                Position -= Velocity;
             
+            if (actor.Name == "Enemy")
+                Engine.CloseApplication();
         }
     }
 }

@@ -38,10 +38,18 @@ namespace MathForGames
         /// </summary>
         private void Start()
         {
+            //Create a new scene called scene
             Scene scene = new Scene();
+            //Create a new player
             Player player = new Player('P', 5, 5, 1, "Player", ConsoleColor.DarkMagenta);
-            Actor actor = new Actor('^', new MathLibrary.Vector2 { X = 10, Y = 4 }, "Actor", ConsoleColor.Red);
-            
+            //Create a new actor. This will be the enemy
+            Actor actor = new Actor('^', new MathLibrary.Vector2 { X = 10, Y = 4 }, "Enemy", ConsoleColor.Red);
+            //Create a new UI text that displays health
+            UIText healthText = new UIText(31, 2, "Health", ConsoleColor.Blue, 10, 10, "TestText");
+            //Create and add UI for the scene
+           // PlayerHud playerHud = new PlayerHud(player, healthText);
+            //scene.AddUIElement(playerHud);
+
             for (int i = 1; i < 30; i++)
             {
                 Actor wall = new Actor('^', i, 0, "Wall", ConsoleColor.Green);
@@ -49,21 +57,25 @@ namespace MathForGames
             }
             for (int i = 1; i < 10; i++)
             {
-                Actor wall2 = new Actor('|', 0, i, "Wall2", ConsoleColor.Green);
-                scene.AddActor(wall2);
+                Actor wall = new Actor('|', 0, i, "Wall", ConsoleColor.Green);
+                scene.AddActor(wall);
             }
             for (int i = 1; i < 30; i++)
             {
-                Actor wall3 = new Actor('v', i, 10, "Wall3", ConsoleColor.Green);
-                scene.AddActor(wall3);
+                Actor wall = new Actor('v', i, 10, "Wall", ConsoleColor.Green);
+                scene.AddActor(wall);
             }
             for (int i = 1; i < 10; i++)
             {
-                Actor wall4 = new Actor('|', 30, i, "Wall4", ConsoleColor.Green);
-                scene.AddActor(wall4);
+                Actor wall = new Actor('|', 30, i, "Wall", ConsoleColor.Green);
+                scene.AddActor(wall);
             }
 
+            //Adds the UI text to the scene
+            scene.AddUIElement(healthText);
+            //Adds the enemy to the scene
             scene.AddActor(actor);
+            //Adds the player to the scene
             scene.AddActor(player);
 
             _currentSceneIndex = AddScene(scene);
@@ -78,6 +90,7 @@ namespace MathForGames
         private void Update()
         {
             _scenes[_currentSceneIndex].Update();
+            _scenes[_currentSceneIndex].UpdateUI();
         }
 
         /// <summary>
@@ -93,6 +106,7 @@ namespace MathForGames
 
             //Adds all actor icons to buffer
             _scenes[_currentSceneIndex].Draw();
+            _scenes[_currentSceneIndex].DrawUI();
 
             //Iterate through buffer
             for (int y = 0; y < _buffer.GetLength(1); y++)
