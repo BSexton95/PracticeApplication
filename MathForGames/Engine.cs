@@ -50,7 +50,7 @@ namespace MathForGames
             // PlayerHud playerHud = new PlayerHud(player, healthText);
             //scene.AddUIElement(playerHud);
 
-            Ball ball = new Ball('O', new Vector2 { X = 0, Y = 0 }, "Ball", ConsoleColor.DarkBlue);
+            Ball ball = new Ball('O', new Vector2 { X = 2, Y = 3 }, "Ball", ConsoleColor.DarkBlue);
             scene.AddActor(ball);
 
             for (int i = 1; i < 30; i++)
@@ -102,7 +102,7 @@ namespace MathForGames
         private void Draw()
         {
             //Clear the stuff that was on the screen in the last frame
-            _buffer = new Icon[Console.WindowWidth, Console.WindowHeight - 1];
+            _buffer = new Icon[Console.WindowWidth - 1, Console.WindowHeight - 1];
 
             //Reset the cursor position to the top so the previous screen is drawn over
             Console.SetCursorPosition(0, 0);
@@ -128,7 +128,7 @@ namespace MathForGames
                 }
 
                 //Skip a line once the end of a row has been reached
-                Console.WriteLine();
+                Console.WriteLine('n');
             }
         }
 

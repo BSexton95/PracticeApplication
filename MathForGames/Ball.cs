@@ -7,11 +7,16 @@ namespace MathForGames
 {
     class Ball : Actor
     {
-        private char _icon;
         private Vector2 _velocity;
-        private ConsoleColor _color;
         private Vector2 _position;
+        private int _speed = 2;
         //private bool _hitTarget = false;
+
+        public int Speed
+        {
+            get { return _speed; }
+            set { _speed = value; }
+        }
 
         public Vector2 Velocity
         {
@@ -26,7 +31,12 @@ namespace MathForGames
 
         public override void Update()
         {
-            _position.X = Position.X + 1;
+            Vector2 direction = new Vector2();
+
+            direction = new Vector2 { X = 1 };
+
+
+            Velocity = Postion * Speed;
         }
 
     }
